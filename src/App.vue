@@ -1,40 +1,26 @@
 <script setup lang="ts">
-// DEPENDENCIES
+import type { ITags } from '@components/TagsInput/types/props';
+
 import { ref } from 'vue';
 
 // COMPONENTS
-import TagsInput from './components/TagsInput.vue';
+import TagsInput from '@components/TagsInput/TagsInput.vue';
 
-const defaultValue: string[] = [
-  '🍌',
-  '🥑',
-  '🍓',
-  '🍇',
-];
+const tags = ref<ITags[]>([
+  {
+    id: 1,
+    text: 'Lorem ipsum dolor',
+  },
 
-const fruits = ref([
-  ...defaultValue,
+  {
+    id: 2,
+    text: 'Sit amet',
+  },
 ]);
-
-// METHODS
-function setInitialValue() {
-  fruits.value = [
-    ...defaultValue,
-  ];
-}
-
-function init() {
-  setInitialValue();
-}
-
-init();
 </script>
 
 <template>
   <main class="grid w-full h-screen place-content-center">
-    <tags-input
-      v-model="fruits"
-      @refresh-items="setInitialValue"
-    />
+    <tags-input :tags />
   </main>
 </template>
