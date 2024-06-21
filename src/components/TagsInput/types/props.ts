@@ -1,5 +1,5 @@
 export interface ITags {
-  id: number;
+  id: string | number;
   text: string;
 }
 
